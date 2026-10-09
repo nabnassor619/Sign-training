@@ -313,6 +313,36 @@
             border-radius: 8px;
         }
 
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-container input {
+            width: 100%;
+            padding: 12px 45px 12px 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            padding: 5px;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .toggle-password:hover {
+            color: #333;
+        }
+
         @media (max-width: 768px) {
             .table-container {
                 overflow-x: auto;
@@ -332,18 +362,20 @@
             <form id="loginForm">
                 <div class="form-group">
                     <label for="password">كلمة المرور</label>
-                    <input type="password" id="password" placeholder="أدخل كلمة المرور" required>
+                    <div class="password-container">
+                        <input type="password" id="password" placeholder="أدخل كلمة المرور" required>
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility()">
+                            <span id="passwordToggleIcon">👁️</span>
+                        </button>
+                    </div>
+                    <small style="color: #999; display: block; margin-top: 5px;">
+                        اضغط على العين لإظهار/إخفاء كلمة المرور
+                    </small>
                 </div>
-                <button type="submit" class="toggle-password" onclick="togglePasswordVisibility()"><span id="passwordToggelIcon">👁️</span> 
-                </button> </div> 
-        <small style ='color: #999;
-            display : block; margin-top: 5px;"> اضغط على العين لاظهار / اخفاء كلمة المرور </small>
-            </div>
-                    
-                    style="width: 100%;">دخول</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">دخول</button>
             </form>
             <p style="text-align: center; margin-top: 15px; color: #999; font-size: 12px;">
-        
+            
             </p>
         </div>
     </div>
@@ -351,7 +383,10 @@
     <!-- Admin Panel -->
     <div class="admin-container" id="adminPanel">
         <div class="header">
-            <h1>📊 لوحة تحكم - تدريب لغة الإشارة</h1>
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <img src="training-photo.jpg" alt="تدريب لغة الإشارة" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover; border: 3px solid white;">
+                <h1>📊 لوحة تحكم - تدريب لغة الإشارة</h1>
+            </div>
             <button class="logout-btn" onclick="logout()">🚪 تسجيل خروج</button>
         </div>
 
@@ -462,6 +497,20 @@
         function saveData() {
             localStorage.setItem('workshopConfig', JSON.stringify(config));
             localStorage.setItem('registrations', JSON.stringify(registrations));
+        }
+
+        // Toggle password visibility
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('passwordToggleIcon');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.textContent = '👁️';
+            }
         }
 
         // Login
