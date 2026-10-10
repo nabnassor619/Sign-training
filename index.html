@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>تسجيل - تدريب لغة الإشارة</title>
+
+    <style>
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 20px;
+
+        }
+
+
+
+        .container {
+
+            background: white;
+
+            border-radius: 20px;
+
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+
+            max-width: 500px;
+
+            width: 100%;
+
+            overflow: hidden;
+
+        }
+
+
+
+        .header {
+
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+
+            color: white;
+
+            padding: 30px;
+
+            text-align: center;
+
+        }
+
+
+
+        .header-image {
+
+            width: 100%;
+
+            max-width: 400px;
+
+            height: auto;
+
+            border-radius: 15px;
+
+            margin-bottom: 20px;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+            border: 4px solid white;
+
+        }
+
+
+
+        .header h1 {
+
+            font-size: 28px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+
+        .header p {
+
+            font-size: 16px;
+
+            opacity: 0.9;
+
+        }
+
+
+
+        .schedule-badge {
+
+            background: #e74c3c;
+
+            color: white;
+
+            padding: 10px 20px;
+
+            border-radius: 25px;
+
+            display: inline-block;
+
+            margin-top: 15px;
+
+            font-weight: bold;
+
+        }
+
+
+
+        .form-content {
+
+            padding: 30px;
+
+        }
+
+
+
+        .form-group {
+
+            margin-bottom: 20px;
+
+        }
+
+
+
+        label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #333;
+
+            font-weight: 600;
+
+            font-size: 14px;
+
+        }
+
+
+
+        input, select, textarea {
+
+            width: 100%;
+
+            padding: 12px 15px;
+
+            border: 2px solid #e0e0e0;
+
+            border-radius: 10px;
+
+            font-size: 16px;
+
+            transition: border-color 0.3s;
+
+        }
+
+
+
+        input:focus, select:focus, textarea:focus {
+
+            outline: none;
+
+            border-color: #667eea;
+
+        }
+
+
+
+        .days-selection {
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 10px;
+
+            margin-top: 10px;
+
+        }
+
+
+
+        .day-checkbox {
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 10px;
+
+            background: #f8f9fa;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            transition: background 0.3s;
+
+        }
+
+
+
+        .day-checkbox:hover {
+
+            background: #e9ecef;
+
+        }
+
+
+
+        .day-checkbox input {
+
+            width: auto;
+
+            margin-left: 8px;
+
+        }
+
+
+
+        .day-checkbox label {
+
+            margin: 0;
+
+            cursor: pointer;
+
+            font-weight: normal;
+
+        }
+
+
+
+        .submit-btn {
+
+            width: 100%;
+
+            padding: 15px;
+
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+            color: white;
+
+            border: none;
+
+            border-radius: 10px;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: transform 0.2s, box-shadow 0.2s;
+
+        }
+
+
+
+        .submit-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+
+        }
+
+
+
+        .submit-btn:disabled {
+
+            background: #ccc;
+
+            cursor: not-allowed;
+
+            transform: none;
+
+        }
+
+
+
+        .info-box {
+
+            background: #e3f2fd;
+
+            border-right: 4px solid #2196f3;
+
+            padding: 15px;
+
+            border-radius: 8px;
+
+            margin-bottom: 20px;
+
+            font-size: 14px;
+
+        }
+
+
+
+        .spots-left {
+
+            text-align: center;
+
+            padding: 10px;
+
+            background: #fff3cd;
+
+            border-radius: 8px;
+
+            margin-bottom: 20px;
+
+            font-weight: bold;
+
+            color: #856404;
+
+        }
+
+
+
+        .whatsapp-link {
+
+            display: block;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #25d366;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+        }
+
+
+
+        .success-message {
+
+            display: none;
+
+            background: #d4edda;
+
+            color: #155724;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+        }
+
+
+
+        .error-message {
+
+            display: none;
+
+            background: #f8d7da;
+
+            color: #721c24;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+        }
+
+
+
+        .admin-link {
+
+            position: fixed;
+
+            bottom: 20px;
+
+            left: 20px;
+
+            background: rgba(0,0,0,0.7);
+
+            color: white;
+
+            padding: 10px 15px;
+
+            border-radius: 25px;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <img src="training-photo.jpg" alt="تدريب لغة الإشارة" class="header-image">
+
+            <h1>🤟 تدريب لغة الإشارة</h1>
+
+            <p>لأن التواصل حق للجميع</p>
+
+            <div class="schedule-badge">
+
+                📅 الأحد - الخميس | ⏰ 6:30 - 7:30 مساءً
+
+            </div>
+
+        </div>
+
+
+
+        <div class="form-content">
+
+            <div class="spots-left" id="spotsLeft">
+
+                ⏳ جاري التحقق من الأماكن المتاحة...
+
+            </div>
+
+
+
+            <div class="info-box">
+
+                <strong>📋 معلومات الدورة:</strong><br>
+
+                • المدة: ساعة واحدة يومياً<br>
+
+                • الأيام: من الأحد إلى الخميس<br>
+
+                • الوقت: 6:30 مساءً - 7:30 مساءً<br>
+
+                • المكان: اونلاين<br>
+
+                • الرسوم: 5 ريالات
+
+            </div>
+
+
+
+            <form id="registrationForm">
+
+                <div class="form-group">
+
+                    <label for="fullName">الاسم الكامل *</label>
+
+                    <input type="text" id="fullName" name="fullName" required placeholder="أدخل اسمك الكامل">
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="email">البريد الإلكتروني *</label>
+
+                    <input type="email" id="email" name="email" required placeholder="example@email.com">
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="phone">رقم الهاتف (واتساب) *</label>
+
+                    <input type="tel" id="phone" name="phone" required placeholder="95XXXXXX" pattern="[0-9]{8}">
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="age">العمر *</label>
+
+                    <input type="number" id="age" name="age" required min="10" max="100" placeholder="أدخل عمرك">
+
+                </div>
+
+
+
+ <div class="form-group">
+
+                    <label for="gender">الجنس</label>
+
+                    <select id="gender" name="gender">
+
+                        
+
+                     <option value="male">ذكر</option>
+
+                     <option value="female">أنثى</option>
+
+                    </select>
+
+                </div>
+
+
+
+
+
+
+
+                <div class="form-group">
+
+                    <label for="experience">مستوى الخبرة في لغة الإشارة</label>
+
+                    <select id="experience" name="experience">
+
+                        <option value="beginner">مبتدئ - لا أعرف شيئاً</option>
+
+                        <option value="basic">أساسي - أعرف القليل</option>
+
+                        <option value="intermediate">متوسط</option>
+
+                        <option value="advanced">متقدم</option>
+
+                    </select>
+
+                </div>
+
+                
+
+
+
+                <div class="form-group">
+
+                    <label for="motivation">لماذا تريد تعلم لغة الإشارة؟ (اختياري)</label>
+
+                    <textarea id="motivation" name="motivation" rows="3" placeholder="شاركنا سبب اهتمامك..."></textarea>
+
+                </div>
+
+
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+
+                    📝 سجل الآن
+
+                </button>
+
+            </form>
+
+
+
+            <div class="success-message" id="successMessage">
+
+                ✅ تم التسجيل بنجاح!<br>
+
+                سيتم التواصل معك قريباً عبر واتساب لتأكيد الحجز.
+
+            </div>
+
+
+
+            <div class="error-message" id="errorMessage">
+
+                ❌ عذراً، حدث خطأ. يرجى المحاولة مرة أخرى.
+
+            </div>
+
+
+
+            <a href="https://wa.me/96895576655" class="whatsapp-link" target="_blank">
+
+                💬 تواصل معنا عبر واتساب
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <a href="admin.html" class="admin-link">🔐 دخول المسؤول</a>
+
+
+
+    <script>
+
+        // Load configuration
+
+        let config = {};
+
+        let registrations = [];
+
+
+
+        // Initialize
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            loadData();
+
+            updateSpotsLeft();
+
+            loadTrainingPhoto();
+
+        });
+
+
+
+        // Load training photo from localStorage
+
+        function loadTrainingPhoto() {
+
+            const savedPhoto = localStorage.getItem('trainingPhoto');
+
+            if (savedPhoto) {
+
+                const headerImg = document.querySelector('.header-image');
+
+                if (headerImg) {
+
+                    headerImg.src = savedPhoto;
+
+                }
+
+            }
+
+        }
+
+
+
+        function loadData() {
+
+            // Try to load from localStorage
+
+            const savedConfig = localStorage.getItem('workshopConfig');
+
+            const savedRegistrations = localStorage.getItem('registrations');
+
+
+
+            if (savedConfig) {
+
+                config = JSON.parse(savedConfig);
+
+            } else {
+
+                // Default config
+
+                config = {
+
+                    max_participants: 20,
+
+                    current_participants: 0,
+
+                    registration_open: true
+
+                };
+
+            }
+
+
+
+            if (savedRegistrations) {
+
+                registrations = JSON.parse(savedRegistrations);
+
+            }
+
+        }
+
+
+
+        function updateSpotsLeft() {
+
+            const spotsLeft = config.max_participants - registrations.length;
+
+            const spotsElement = document.getElementById('spotsLeft');
+
+
+
+            if (!config.registration_open) {
+
+                spotsElement.innerHTML = '🔒 التسجيل مغلق حالياً';
+
+                spotsElement.style.background = '#f8d7da';
+
+                spotsElement.style.color = '#721c24';
+
+                document.getElementById('submitBtn').disabled = true;
+
+            } else if (spotsLeft <= 0) {
+
+                spotsElement.innerHTML = '❌ اكتمل العدد - لا توجد أماكن متاحة';
+
+                spotsElement.style.background = '#f8d7da';
+
+                spotsElement.style.color = '#721c24';
+
+                document.getElementById('submitBtn').disabled = true;
+
+            } else if (spotsLeft <= 5) {
+
+                spotsElement.innerHTML = `⚠️ متبقي ${spotsLeft} أماكن فقط - سارع بالتسجيل!`;
+
+                spotsElement.style.background = '#fff3cd';
+
+                spotsElement.style.color = '#856404';
+
+            } else {
+
+                spotsElement.innerHTML = `✅ متاح ${spotsLeft} مكان من أصل ${config.max_participants}`;
+
+                spotsElement.style.background = '#d4edda';
+
+                spotsElement.style.color = '#155724';
+
+            }
+
+        }
+
+
+
+        // Handle form submission
+
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+
+            e.preventDefault();
+
+
+
+            // Check if registration is open
+
+            if (!config.registration_open || registrations.length >= config.max_participants) {
+
+                alert('عذراً، التسجيل مغلق أو اكتمل العدد');
+
+                return;
+
+            }
+
+
+
+            // Get selected days
+
+            const selectedDays = [];
+
+            document.querySelectorAll('input[name="days"]:checked').forEach(function(checkbox) {
+
+                selectedDays.push(checkbox.value);
+
+            });
+
+
+
+            if (selectedDays.length === 0) {
+
+                alert('يرجى اختيار يوم واحد على الأقل');
+
+                return;
+
+            }
+
+
+
+            // Create registration object
+
+            const registration = {
+
+                id: Date.now(),
+
+                fullName: document.getElementById('fullName').value,
+
+                email: document.getElementById('email').value,
+
+                phone: document.getElementById('phone').value,
+
+                age: document.getElementById('age').value,
+
+                experience: document.getElementById('experience').value,
+
+                days: selectedDays,
+
+                motivation: document.getElementById('motivation').value,
+
+                timestamp: new Date().toLocaleString('ar-OM'),
+
+                status: 'pending'
+
+            };
+
+
+
+            // Add to registrations
+
+            registrations.push(registration);
+
+
+
+            // Save to localStorage
+
+            localStorage.setItem('registrations', JSON.stringify(registrations));
+
+
+
+            // Update config
+
+            config.current_participants = registrations.length;
+
+            localStorage.setItem('workshopConfig', JSON.stringify(config));
+
+
+
+            // Show success message
+
+            document.getElementById('registrationForm').style.display = 'none';
+
+            document.getElementById('successMessage').style.display = 'block';
+
+
+
+            // Update spots
+
+            updateSpotsLeft();
+
+
+
+            // Send to WhatsApp (optional)
+
+            const message = `تسجيل جديد في دورة لغة الإشارة:%0aالاسم: ${registration.fullName}%0aالهاتف: ${registration.phone}%0aالأيام: ${selectedDays.join(', ')}`;
+
+            // window.open(`https://wa.me/96895576655?text=${message}`, '_blank');
+
+        });
+
+    </script>
+
+</body>
+
+</html>
