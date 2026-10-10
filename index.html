@@ -388,16 +388,7 @@
                 return;
             }
 
-            // Get selected days
-            const selectedDays = [];
-            document.querySelectorAll('input[name="days"]:checked').forEach(function(checkbox) {
-                selectedDays.push(checkbox.value);
-            });
-
-            if (selectedDays.length === 0) {
-                alert('يرجى اختيار يوم واحد على الأقل');
-                return;
-            }
+         
 
             // Create registration object
             const registration = {
@@ -406,8 +397,8 @@
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
                 age: document.getElementById('age').value,
+                gender: document.getElementById('gender').value,
                 experience: document.getElementById('experience').value,
-                days: selectedDays,
                 motivation: document.getElementById('motivation').value,
                 timestamp: new Date().toLocaleString('ar-OM'),
                 status: 'pending'
